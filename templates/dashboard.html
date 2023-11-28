@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .link-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .link-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Dashboard</h2>
+        <a href="/add_student" class="link-button">Add Student</a>
+        <a href="/add_quiz" class="link-button">Add Quiz</a>
+        <a href="/results" class="link-button">Add Quiz Result</a>
+
+        <h2>Students</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Results</th>
+                <th>Action</th> 
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.first_name }} {{ student.last_name }}</td>
+                <td><a href="/student/{{ student.id }}">View Results</a></td>
+                <td>
+                    <form action="/delete_student/{{ student.id }}" method="post">
+                        <input type="submit" value="Delete" />
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h2>Quizzes</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Subject</th>
+                <th>Questions</th>
+                <th>Date</th>
+                <th>Action</th> 
+            </tr>
+            {% for quiz in quizzes %}
+            <tr>
+                <td>{{ quiz.id }}</td>
+                <td>{{ quiz.subject }}</td>
+                <td>{{ quiz.num_questions }}</td>
+                <td>{{ quiz.quiz_date }}</td>
+                <td>
+                    <form action="/delete_quiz/{{ quiz.id }}" method="post">
+                        <input type="submit" value="Delete" />
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

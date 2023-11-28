@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .quiz-form-container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+        .form-submit {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .form-submit:hover {
+            background-color: #0056b3;
+        }
+        .back-link {
+            display: block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-form-container">
+        <h2>Add New Student</h2>
+        <form action="/add_student" method="post">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" class="form-input" required 
+                   oninvalid="this.setCustomValidity('Please enter the first name')"
+                   oninput="this.setCustomValidity('')">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" class="form-input" required 
+                   oninvalid="this.setCustomValidity('Please enter the last name')"
+                   oninput="this.setCustomValidity('')">
+            <input type="submit" value="Add Student" class="form-submit">
+            <input type="reset" value="Clear" class="form-submit"> 
+        </form>
+        <a href="/" class="back-link">Back to Dashboard</a>
+    </div>
+</body>
+</html>
